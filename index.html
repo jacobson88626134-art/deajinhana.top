@@ -110,6 +110,14 @@
                         <span class="text-2xl" aria-hidden="true">🤝</span> 대진유통 하나약국
                     </a>
                 </div>
+                <!-- 모바일 메뉴 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-700 focus:outline-none p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
                 <!-- 데스크탑 네비게이션 -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">사이트 소개</a>
@@ -118,6 +126,15 @@
                     <!-- 추후 연동될 블로그 메뉴 (메인페이지 내 해당 섹션으로 스크롤 이동) -->
                     <a href="#guide" class="text-blue-600 hover:text-blue-800 font-bold transition-colors">제품 및 복용 가이드</a>
                 </nav>
+            </div>
+        </div>
+        <!-- 모바일 네비게이션 메뉴 (기본 숨김) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-md absolute w-full left-0 z-50">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50">사이트 소개</a>
+                <a href="#reviews" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50">고객 후기</a>
+                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-blue-50">자주 묻는 질문</a>
+                <a href="#guide" class="block px-3 py-2 rounded-md text-base font-bold text-blue-700 bg-blue-50">제품 및 복용 가이드</a>
             </div>
         </div>
     </header>
@@ -284,7 +301,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Guide 1 -->
                     <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 transition transform hover:-translate-y-1 hover:shadow-lg flex flex-col">
-                        <img src="/img/Gemini_Generated_Image_fdo6b1fdo6b1fdo6.webp" alt="비아그라 올바른 복용법" class="w-full  object-cover">
+                        <img src="/img/Gemini_Generated_Image_fdo6b1fdo6b1fdo6.webp" alt="비아그라 올바른 복용법" class="w-full object-cover">
                         <div class="p-6 flex flex-col flex-grow">
                             <span class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">복용 가이드</span>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">비아그라(Viagra) 올바른 복용법 및 주의사항</h3>
@@ -297,7 +314,7 @@
 
                     <!-- Guide 2 -->
                     <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 transition transform hover:-translate-y-1 hover:shadow-lg flex flex-col">
-                        <img src="/img/Gemini_Generated_Image_h1pk2zh1pk2zh1pk.webp" alt="시알리스 특징 가이드" class="w-full  object-cover">
+                        <img src="/img/Gemini_Generated_Image_h1pk2zh1pk2zh1pk.webp" alt="시알리스 특징 가이드" class="w-full object-cover">
                         <div class="p-6 flex flex-col flex-grow">
                             <span class="text-xs font-bold text-yellow-600 uppercase tracking-wider mb-2">제품 비교</span>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">시알리스(Cialis) 특징과 지속 시간의 비밀</h3>
@@ -310,7 +327,7 @@
 
                     <!-- Guide 3 -->
                     <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 transition transform hover:-translate-y-1 hover:shadow-lg flex flex-col">
-                        <img src="/img/Gemini_Generated_Image_1xt34q1xt34q1xt3.webp" alt="가짜 약 구별법" class="w-full  object-cover">
+                        <img src="/img/Gemini_Generated_Image_1xt34q1xt34q1xt3.webp" alt="가짜 약 구별법" class="w-full object-cover">
                         <div class="p-6 flex flex-col flex-grow">
                             <span class="text-xs font-bold text-green-600 uppercase tracking-wider mb-2">건강 칼럼</span>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">가짜 약 주의보! 정품 구별법과 안전한 구매</h3>
@@ -357,5 +374,27 @@
         </div>
     </footer>
 
+    <!-- 모바일 메뉴 동작 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if (btn && menu) {
+                // 메뉴 열기/닫기 토글
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+
+                // 모바일 메뉴 내 앵커 링크 클릭 시 메뉴 자동 닫기 (UX 개선)
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
